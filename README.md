@@ -1,5 +1,5 @@
 # Relonease
-Typecho主题，外观布局来原于Hexo [Stellar](https://xaoxuu.com/wiki/stellar/）
+Typecho主题，外观布局来原于Hexo [Stellar](https://xaoxuu.com/wiki/stellar/)
 
 ![](https://blog.remelens.link/usr/themes/relonease/screenshot.png)
 
