@@ -1,0 +1,67 @@
+/* ------------------------------------
+ * Relonease CSS Darkmode
+ *
+ * @author  Remelens
+ * @link  https://remelens.link/
+ * @update  2024-1-20
+ * --------------------------------- */
+@media (prefers-color-scheme: dark) {
+:root{
+    --font-family:"LXGW WenKai Screen","Microsoft Yahei UI", "Pingfang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei",system-ui,serif;
+    --font-size:92%;
+    --background-color:#1c1e21;
+    --background-important-color:#373d43;
+    --text-color:#ccc;
+    --text-important-color:#fff;
+    --text-second-color:#aaa;
+    --text-third-color:#888;
+    --link-color:#3498db;
+    --link-hover-color:#00ccff;
+    --article-link-color:#09f5;
+    --link-active-color:var(--link-hover-color);
+    --thispage-link-bottom:#09f;
+    --sidebar-link-bottom:#666;
+    --sidebar-link-hover-bottom:#09f;
+    --sidebar-title:#09f;
+    --svg-fill:#cccccc;
+    --svg-second-color:#aaaaaa;
+    --block-border:#383d42;
+    --block-border-second:#555;
+    --block-background:#26292c;
+    --block-hover:#43454a;
+    --block-color:#b0b0b0;
+    --table-border:#383d42;
+    --table-item-border:#383d42;
+    --table-item-background:#26292c;
+    --input-border:#383d42;
+    --comment-border:var(--block-border);
+    --box-shadow:0 0 2px 0 rgba(255,255,255,.05),0 0 8px 0 rgba(255,255,255,.04);
+    --box-shadow-hover:0 0 5px 0 rgba(255,255,255,.12),0 0 8px 0 rgba(255,255,255,.1);
+    --sidebar-show-shadow: 0 12px 16px -4px rgba(255,255,255,.2);
+    --list-radius:10px;
+    --inline-radius:5px;
+    /*code*/
+    --code-font:Menlo, Monaco, Consolas, "Lucida Console", "Courier New", monospace;
+    --code-font-size:.92857em;
+    --code-background:#26292c;
+    --code-inline-color:#B94A48;
+    --code-color:var(--text-color);
+    /*layout*/
+    --sidebar-width:250px;
+}
+#comments ol{
+    background:var(--block-background);
+}
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+textarea {
+    background:var(--block-background);
+    color:var(--text-color);
+}
+}
+.mobilebtn button{
+    background:#0009;
+}
+}

@@ -1,0 +1,115 @@
+/*page-tags.php*/
+
+.page-content.tags ul{
+    margin:0;
+    padding:0;
+}
+.page-content.tags li{
+    list-style-type: none;
+    display:inline;
+    line-height:35px;
+}
+.page-content.tags li a{
+    word-break: keep-all;
+    padding:5px 10px;
+    color: var(--text-second-color);
+    border-radius: var(--inline-radius);
+    background: var(--block-hover);
+}
+.page-content.tags li a::before{
+    content:"#";
+    color:var(--text-third-color);
+    transition:color 0.2s;
+}
+.page-content.tags li a:hover::before{
+    color:var(--link-color);
+    transition:color 0.2s;
+}
+/*page_list.php*/
+.page-content.lists{
+    position:relative;
+}
+.page-content.lists img,.page-content.lists svg{
+    max-width:100%;
+}
+.article-sort{
+    margin-left:20px;
+}
+.article-sort::before{
+    content:" ";
+    position:absolute;
+    width:4px;
+    height:100%;
+    background:var(--block-border);
+    border-radius:2px;
+    left:0;
+}
+.list-year .article-sort-item{
+    margin-left:10px;
+}
+.sort-year,.article-sort-item{
+    margin:10px 0;
+}
+.sort-year::before{
+    content:" ";
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:var(--block-border-second);
+    border-radius:2px;
+    left:-3px;
+    transition:all 0.2s;
+}
+.list-year:hover .sort-year::before{
+    background:var(--sidebar-title);
+    transition:all 0.2s;
+}
+.article-sort-item::before{
+    content:" ";
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:var(--block-border-second);
+    border-radius:4px;
+    left:-2px;
+    transition:all 0.2s;
+}
+.article-sort-item:hover::before{
+    width:4px;
+    height:10px;
+    background:var(--sidebar-title);
+    border-radius:4px;
+    left:0;
+    transition:all 0.2s;
+}
+.article-sort-item .post-meta-date-created{
+    font-size:90%;
+    color:var(--text-third-color);
+}
+.article-sort-item .article-sort-item-title{
+    margin-left:15px;
+}
+.page-content.category ul{
+    margin:0;
+    padding:0;
+}
+.page-content.category li{
+    list-style-type: none;
+    display:inline-block;
+    line-height:35px;
+    margin:10px 0;
+    padding:0 15px;
+    color:var(--text-color);
+    transition:all 0.2s;
+    width:calc(100% - 30px);
+}
+.page-content.category li a{
+    display:inline-block;
+    color:var(--text-color);
+    width:100%;
+}
+.page-content.category li:hover{
+    background:var(--block-background);
+    border-radius:var(--inline-radius);
+    transition:all 0.2s;
+}
