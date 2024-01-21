@@ -5,7 +5,7 @@
  * @package Relonease
  * @author Remelens
  * @version 1.0.0-beta
- * @link http://blog.remelens.link/
+ * @link http://remelens.link/
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

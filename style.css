@@ -314,35 +314,18 @@ button:hover{
     text-align:-webkit-center;
     position: relative;
     background: var(--background-color);
-    padding: .5rem 0;
+    padding: 7px 0;
     padding-bottom:0;
     margin-bottom: 1px;
     word-break: keep-all;
 }
 #nav-menu{
     display: flex;
-    overflow: scroll visible;
+    overflow-x: scroll visible;
     font-size:90%;
     scrollbar-width: none;
     color: var(--text-third-color);
-    padding-bottom:.5rem;
-}
-.listitem{
-    padding: 8px 14px;
-    margin:1px 5px;
-    color: var(--text-third-color);
-    position:relative;
-}
-.listitem:hover{
-    color: var(--text-second-color);
-    border-radius: var(--inline-radius);
-    background:var(--block-hover);
-}
-.listitem.current,.listitem.current:hover{
-    color: var(--text-color);
-    box-shadow: var(--box-shadow);
-    border-radius: var(--inline-radius);
-    background:var(--background-important-color);
+    position: relative;
 }
 .nav-menu::after{
     content:"";
@@ -351,7 +334,7 @@ button:hover{
     height: 2px;
     border-radius: 2px;
     position: absolute;
-    bottom: 0;
+    bottom: -6px;
     display:block;
 }
 .listitem.current::after{
@@ -359,13 +342,28 @@ button:hover{
     background:var(--thispage-link-bottom);
     height: 2px;
     border-radius: 2px;
-    position: absolute;
     display:block;
-    bottom: -9px;
-    left: .75rem;
-    right: .75rem;
+    bottom: -15px;
     pointer-events: none;
     z-index: 1;
+    position:relative;
+}
+.listitem{
+    padding: 8px 15px;
+    margin:1px 5px;
+    color: var(--text-third-color);
+    border-radius: var(--inline-radius);
+    position:relative;
+}
+.listitem:hover{
+    color: var(--text-second-color);
+    background:var(--block-hover);
+}
+.listitem.current,.listitem.current:hover{
+    color: var(--text-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--inline-radius);
+    background:var(--background-important-color);
 }
 #main .post{
     margin-top:25px;
@@ -437,8 +435,12 @@ article .position,article .info{
 .tumb #main,.tumb #sidebar{
     margin-top:230px;
 }
+.page-content{
+    padding-top:10px;
+}
 article.post .main-post a{
     position:relative;
+    display:ruby;
 }
 article.post .main-post a:hover{
     color:var(--link-color);
@@ -462,6 +464,9 @@ article.post .main-post a:hover::before{
     height:calc(100% + 4px);
     border-radius:2px;
     transition:all 0.2s;
+}
+#main p{
+    line-height:25px;
 }
 .info-block{
     border:1px solid var(--block-border);
@@ -657,6 +662,7 @@ article.post .main-post a:hover::before{
 }
 ::-webkit-scrollbar-thumb{
     background:var(--block-border);
+    border-radius:7px;
 }
 /*pjax*/
 #pjax-load{
