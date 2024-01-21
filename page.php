@@ -8,7 +8,7 @@
         <h1 class="post-title" itemprop="name headline">
             <?php $this->title() ?>
         </h1>
-        <div class="post-content" itemprop="articleBody">
+        <div class="post-content main-post" itemprop="articleBody">
             <?php $this->content(); ?>
         </div>
     </article>
