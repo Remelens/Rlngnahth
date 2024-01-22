@@ -2,7 +2,7 @@
 /**
  * 仿Hexo Stellar主题，外观灵感来源xaoxuu，部分代码参照butterfly和Stellar
  *
- * @package Relonease
+ * @package Rlngnahth
  * @author Remelens
  * @version 1.0.0-beta
  * @link http://remelens.link/
