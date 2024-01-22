@@ -1,4 +1,4 @@
-# Relonease
+# Rlngnahth
 Typecho主题，外观布局来原于Hexo [Stellar](https://xaoxuu.com/wiki/stellar/)
 
 ![](https://blog.remelens.link/usr/themes/relonease/screenshot.png)
@@ -28,3 +28,5 @@ $行内\KaTeX$
 
 ### 部分代码说明
 部分css代码来源于Stellar,独立页面`page_list`列出所有博文的程式来源于[Matcha](https://github.com/BigCoke233/matcha)，博文列表页面切换代码、略缩图函数等程式来源于[Typecho Butterfly](https://github.com/wehaox/Typecho-Butterfly)，~~好一个大杂烩~~
+
+Copyright (c) 2022-2024 Remelens
