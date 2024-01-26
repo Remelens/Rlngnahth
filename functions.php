@@ -12,6 +12,16 @@ function themeConfig($form)
 
     $form->addInput($logoUrl);
 
+    $createTime = new \Typecho\Widget\Helper\Form\Element\Text(
+        'createTime',
+        null,
+        '2022/12/29',
+        _t('建站时间'),
+        _t('格式 Y/m/d')
+    );
+
+    $form->addInput($createTime);
+
     $siteInfo = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'siteInfo',
         null,
@@ -77,7 +87,7 @@ function themeConfig($form)
             '关闭',
             '启用'
         ],
-        '启用',
+        '1',
         _t('使用pjax'),
         _t('全站无刷新加载页面')
     );
@@ -99,7 +109,7 @@ function themeConfig($form)
             '关闭',
             '启用'
         ],
-        '启用',
+        '1',
         _t('启用KaTeX'),
         _t('在你的博文里插入数学公式')
     );
@@ -111,7 +121,7 @@ function themeConfig($form)
             '关闭',
             '启用'
         ],
-        '启用',
+        '1',
         _t('启用TwEmoji'),
         _t('推特同款emoji-干碎丑陋的系统样式')
     );
@@ -254,7 +264,7 @@ echo $commentClass;
 ?>">
     <div id="<?php $comments->theId(); ?>">
         <div class="comment-author">
-            <span itemprop="image"><?php $comments->gravatar('64', ''); ?></span>
+            <span itemprop="image"><?php $comments->gravatar('80', ''); ?></span>
             <cite class="fn">
                 <span class="author"><?php $comments->author(); ?></span>
                 <span class="comment-meta"><a href="<?php $comments->permalink(); ?>"><time itemprop="commentTime" datetime="<?php $comments->date(); ?>"><?php $comments->date('Y-m-d H:i'); ?></time></a></span>

@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<div id="comments">
+<div id="comments" class="comments">
     <?php $this->comments()->to($comments); ?>
     <?php if ($comments->have()): ?>
         <h3><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h3>

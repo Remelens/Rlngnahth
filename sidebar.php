@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<div class="sidebar" id="sidebar" role="complementary">
+<div class="sidebar<?php if($this->fields->Thumbnail&&$this->is('post')){echo ' tumb';}?>" id="sidebar" role="complementary">
     <header id="header">
         <div class="site-name">
             <a id="logo" href="<?php $this->options->siteUrl(); ?>">
@@ -50,7 +50,15 @@
             </ul>
         </section>
     <?php endif; ?>
-
+    <?php if ($this->options->createTime): ?>
+        <section class="widget">
+            <h3 class="widget-title"><?php _e('网站信息'); ?></h3>
+<?php
+$time_mid=time()-strtotime($this->options->createTime);
+echo '本站已经运行: '.date('y年m月d天',$time_mid-2209017943);
+?>
+        </section>
+    <?php endif;?>
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowCategory', $this->options->sidebarBlock)): ?>
         <section class="widget">
             <h3 class="widget-title"><?php _e('分类'); ?></h3>

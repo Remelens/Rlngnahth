@@ -43,4 +43,4 @@ function sidebar(){
 <div class="mobilebtn">
 <button onclick="sidebar()"><?php $this->need('img/bar.svg'); ?></button>
 </div>
-<div id="body" <?php if($this->fields->Thumbnail&&$this->is('post')){echo 'class="tumb"';}?>>
+<div id="body">

@@ -4,7 +4,7 @@ if($this->options->pjax===0||$this->options->pjax==='0')exit;
 ?>
 <script id="pjax-script">
 var pjax = new Pjax({
-  selectors: ["#main",'.widget','title'],
+  selectors: ["#main",'.tumbhead','#sidebar','title'],
   cacheBust:false
 });
 var pjld,pjldnum=0;
