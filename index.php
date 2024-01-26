@@ -4,7 +4,7 @@
  *
  * @package Rlngnahth
  * @author Remelens
- * @version 1.1
+ * @version 1.0
  * @link http://remelens.link/
  */
 
