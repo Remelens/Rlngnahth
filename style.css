@@ -249,7 +249,7 @@ button:hover{
     flex-shrink: 0;
     position: sticky;
     height: fit-content;
-    top:0px;
+    top:10px;
 }
 #search{
     margin-top:15px;

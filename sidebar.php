@@ -55,7 +55,10 @@
             <h3 class="widget-title"><?php _e('网站信息'); ?></h3>
 <?php
 $time_mid=time()-strtotime($this->options->createTime);
-echo '本站已经运行: '.date('y年m月d天',$time_mid-2209017943);
+$time_yr=intval($time_mid/3600/24/365);
+$time_mon=intval($time_mid/3600/24/30)-$time_yr*12+1;
+$time_day=intval($time_mid/3600/24)-$time_yr*365-($time_mon-1)*30;
+echo '本站已经运行: '.strval($time_yr).'年'.strval($time_mon).'月'.strval($time_day).'天';
 ?>
         </section>
     <?php endif;?>

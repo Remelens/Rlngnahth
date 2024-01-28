@@ -53,7 +53,6 @@ function LoadTwemoji(){
 <script src="<?php cdnjs();?>/ajax/libs/prism/1.29.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="<?php cdnjs();?>/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/prism-themes/1.9.0/prism-vsc-dark-plus.min.css" integrity="sha512-ML8rkwYTFNcblPFx+VLgFIT2boa6f8DDP6p6go4+FT0/mJ8DCbCgi6S0UdjtzB3hKCr1zhU+YVB0AHhIloZP8Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="<?php $this->options->themeUrl('static/copycode.min.js'); ?>" crossorigin="anonymous"></script>
 
 <script>
 //configures
@@ -64,9 +63,9 @@ function LoadEx(){
     <?php if($this->options->twemoji===1||$this->options->twemoji==='1'):?>
     LoadTwemoji();
     <?php endif;?>
-    setTimeout(()=>showCopyButton(),100);
+    Prism.highlightAll();
 }
-    document.addEventListener("DOMContentLoaded",LoadEx);
+document.addEventListener("DOMContentLoaded",LoadEx);
 </script>
 <style>
 img.twemoji{width:1em;height:1em;display:inline-block;margin:0;padding:0 2px;position: relative;

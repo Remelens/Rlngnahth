@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php $this->need('static.php');?>
     <!-- 通过自有函数输出HTML头部信息 -->
-    <?php $this->header(); ?>
+    <?php $this->header('generator='); ?>
     <!--end-->
     <meta name="theme-color" content="#f8f8f8"><!--TODO-->
     <title><?php $this->archiveTitle([
@@ -25,7 +25,7 @@
     <!-- 使用url函数转换相关路径 -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style_dark.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/pages.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('static/pages.css'); ?>">
     <script>
 console.log(`%c Relonease %c ©Remelens `,'font-size:110%;color:#444;background:#f9fafa;','font-size:110%;color:#ccc;background:#1c1e21;');
 function sidebar(){
