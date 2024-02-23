@@ -12,7 +12,8 @@
         </h1>
         <div class="post-content main-post" itemprop="articleBody">
 <?php 
-echo $this->content;
+//echo $this->content;
+echo contentReplace($this->content);
 ?>
         </div>
         <div class="info-block main-post">

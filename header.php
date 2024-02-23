@@ -1,4 +1,9 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php 
+if (!defined('__TYPECHO_ROOT_DIR__')) exit; 
+if($_SERVER["HTTP_X_PJAX"]==="true"){
+    \Typecho\Response::getInstance()->setStatus(200);
+}
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -26,16 +31,7 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style_dark.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('static/pages.css'); ?>">
-    <script>
-console.log(`%c Relonease %c ©Remelens `,'font-size:110%;color:#444;background:#f9fafa;','font-size:110%;color:#ccc;background:#1c1e21;');
-function sidebar(){
-  if(document.getElementById('sidebar').classList.contains('showsidebar')){
-    document.getElementById('sidebar').classList.remove('showsidebar');
-  }else{
-    document.getElementById('sidebar').classList.add('showsidebar');
-  }
-}
-    </script>
+    <script src="<?php $this->options->themeUrl('static/script.js'); ?>"></script>
     <?php echo $this->options->siteHeader; ?>
 </head>
 <body>

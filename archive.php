@@ -11,6 +11,7 @@
             'author'   => _t('%s 发布的文章')
         ], '', ''); ?></h2>
     <?php if ($this->have()): ?>
+        <div class="post-list">
         <?php while ($this->next()): ?>
         <?php $tumb_img=get_ArticleThumbnail($this); ?>
         <article class="listblog post<?php if($tumb_img!==false){echo ' tumb-img';}?>" itemscope itemtype="http://schema.org/BlogPosting">
@@ -40,6 +41,7 @@
             </div>
         </article>
         <?php endwhile; ?>
+        </div>
     <?php else: ?>
         <article class="post">
             <h2 class="post-title"><?php _e('没有找到内容'); ?></h2>

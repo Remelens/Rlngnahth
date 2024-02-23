@@ -1,6 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div class="main" id="main" role="main">
     <?php $this->need('topbar.php'); ?>
+    <div class="post-list">
     <?php while ($this->next()): ?>
         <?php $tumb_img=get_ArticleThumbnail($this); ?>
         <article class="listblog post<?php if($tumb_img!==false){echo ' tumb-img';}?>" itemscope itemtype="http://schema.org/BlogPosting">
@@ -30,7 +31,7 @@
             </div>
         </article>
     <?php endwhile; ?>
-
+    </div>
 <nav id="pagination">
  <?php $this->pageNav('<i class="fas fa-chevron-left fa-fw"></i>', '<i class="fas fa-chevron-right fa-fw"></i>', 1, '...', ['wrapTag' => 'div', 'wrapClass' => 'pagination', 'itemTag' => '', 'prevClass' => 'extend prev', 'nextClass' => 'extend next', 'currentClass' => 'page-number current']); ?>
 </nav>

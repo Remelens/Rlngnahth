@@ -4,11 +4,12 @@
  *
  * @package Rlngnahth
  * @author Remelens
- * @version 1.1
+ * @version 1.3
  * @link http://remelens.link/
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
 $this->need('header.php');
 $this->need('sidebar.php');
 $this->need('main.php');

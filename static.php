@@ -54,6 +54,9 @@ function LoadTwemoji(){
 <script src="<?php cdnjs();?>/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/prism-themes/1.9.0/prism-vsc-dark-plus.min.css" integrity="sha512-ML8rkwYTFNcblPFx+VLgFIT2boa6f8DDP6p6go4+FT0/mJ8DCbCgi6S0UdjtzB3hKCr1zhU+YVB0AHhIloZP8Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<script src="<?php cdnjs();?>/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js" integrity="sha512-PAURuQ4QaYqk2OA3wmFRZDj9fK8jRNFqG/38qiR4qVdjbpZy+ByXr37AgqyVTiZbCuKunE0Fo/lBMdnsC7Kt8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" integrity="sha512-dxr4721bEsdCIMMW3FYUBjwftlyBp11cezjcLfp3gRekYzSGdUBBg7WziAZTvWk3txO+XL1Suoj8a/WutfZy2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <script>
 //configures
 function LoadEx(){
@@ -64,6 +67,9 @@ function LoadEx(){
     LoadTwemoji();
     <?php endif;?>
     Prism.highlightAll();
+    Fancybox.bind("[data-fancybox]",{
+        groupAll: true,
+    }); 
 }
 document.addEventListener("DOMContentLoaded",LoadEx);
 </script>

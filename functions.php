@@ -300,3 +300,32 @@ function getArchives($widget) {
         }
         return $stat;
 }
+function fancybox($content){
+    return preg_replace_callback(
+        '/<img\s+([^>]*?)src="([^"]+)"([^>]*?)>/i',
+        function ($matches) {
+            // $matches[0] <img>
+            // $matches[2] src
+            $replacement = "<img {$matches[1]} src=\"{$matches[2]}\" {$matches[3]} data-fancybox loading=\"lazy\">";
+            return $replacement;
+        },
+        $content
+    );
+}
+function createCatalog($obj){
+    global $catalog;
+    global $catalog_count;
+    $catalog = array();
+    $catalog_count = 0;
+    $obj = preg_replace_callback('/<h([1-6])(.*?)>(.*?)<\/h\1>/i', function ($obj) {
+        global $catalog;
+        global $catalog_count;
+        $catalog_count++;
+        $catalog[] = array('text' => trim(strip_tags($obj[3])), 'depth' => $obj[1], 'count' => $catalog_count);
+        return '<h' . $obj[1] . $obj[2] . ' id="cl-' . $catalog_count . '"><a class="markdownIt-Anchor" href="#cl-' . $catalog_count . '"></a>' . $obj[3] . '</h' . $obj[1] . '>';
+    }, $obj);
+    return $obj;
+}
+function contentReplace($ctt){
+    return createCatalog(fancybox($ctt));
+}

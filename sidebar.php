@@ -28,7 +28,7 @@
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
         <section class="widget">
             <h3 class="widget-title hasrss"><?php _e('最新文章'); ?>
-            <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRss', $this->options->sidebarBlock)): ?><a class="rss-link" href="<?php $this->options->feedUrl(); ?>"><?php $this->need('img/rss.svg'); ?></a><?php endif; ?></h3>
+            <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRss', $this->options->sidebarBlock)): ?><a target="_blank" class="rss-link" href="<?php $this->options->feedUrl(); ?>"><?php $this->need('img/rss.svg'); ?></a><?php endif; ?></h3>
             <ul class="widget-list">
                 <?php \Widget\Contents\Post\Recent::alloc()
                     ->parse('<li><a href="{permalink}">{title}</a></li>'); ?>
@@ -39,7 +39,7 @@
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
         <section class="widget">
             <h3 class="widget-title hasrss"><?php _e('最近回复'); ?>
-            <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRss', $this->options->sidebarBlock)): ?><a class="rss-link" href="<?php $this->options->commentsFeedUrl(); ?>"><?php $this->need('img/rss.svg'); ?></a><?php endif; ?></h3>
+            <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRss', $this->options->sidebarBlock)): ?><a target="_blank" class="rss-link" href="<?php $this->options->commentsFeedUrl(); ?>"><?php $this->need('img/rss.svg'); ?></a><?php endif; ?></h3>
             <ul class="widget-list">
                 <?php \Widget\Comments\Recent::alloc()->to($comments); ?>
                 <?php while ($comments->next()): ?>
@@ -55,11 +55,10 @@
             <h3 class="widget-title"><?php _e('网站信息'); ?></h3>
 <?php
 $time_mid=time()-strtotime($this->options->createTime);
-$time_yr=intval($time_mid/3600/24/365);
-$time_mon=intval($time_mid/3600/24/30)-$time_yr*12+1;
-$time_day=intval($time_mid/3600/24)-$time_yr*365-($time_mon-1)*30;
-echo '本站已经运行: '.strval($time_yr).'年'.strval($time_mon).'月'.strval($time_day).'天';
-?>
+$time_day=intval($time_mid/3600/24);
+echo '本站已经运行: '.strval($time_day).'天';
+?><br>
+文章数量:<?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?><?php $stat->publishedPostsNum() ?>
         </section>
     <?php endif;?>
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowCategory', $this->options->sidebarBlock)): ?>
