@@ -8,7 +8,6 @@
 /* ------------------
  * Expreiment Area
  * --------------- */
-
 /* ------------------
  * Global style
  * --------------- */
@@ -227,6 +226,18 @@ button:hover,input[type="submit"]:hover{
     margin:0;
     color:var(--text-third-color);
     font-size:12px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+.site-name #logo .description .desc,.site-name #logo .description .domain{
+    display:block;
+    line-height:20px;
+    transition:all 0.2s;
+}
+.site-name:hover #logo .description .desc,.site-name:hover #logo .description .domain{
+    transform: translateY(-20px);
+    transition:all 0.2s;
 }
 #logo .logo{
     height:50px;
@@ -360,6 +371,7 @@ button:hover,input[type="submit"]:hover{
     color: var(--text-third-color);
     border-radius: var(--inline-radius);
     position:relative;
+    cursor: default;
 }
 .listitem:hover{
     color: var(--text-second-color);
@@ -447,6 +459,9 @@ article .position,article .info{
 .page-content{
     padding-top:10px;
 }
+.post.page-content{
+    padding-top:0;
+}
 article.post .main-post a{
     position:relative;
     display:inline-block;
@@ -526,6 +541,7 @@ details{
     border-radius: var(--inline-radius);
     background:var(--background-important-color);
     box-shadow:var(--box-shadow);
+    cursor:default;
 }
 .comment-reply a:hover{
     color: var(--text-third-color);
@@ -651,6 +667,9 @@ details{
 .mobile-show{
     display:block;
 }
+#header.mobile-show{
+    margin:18px;
+}
 .tumbhead{
     position: absolute;
     width:100%;
@@ -675,7 +694,7 @@ details{
 #sidebar.showsidebar{
   display: block;
   position: fixed;
-  width: calc(100% - 100px);
+  width: calc(100% - 80px);
   transform: translateX(0);
   overflow: scroll;
   height: calc(100% - 15px);
@@ -692,16 +711,14 @@ details{
   padding:0;
   width:100%;
 }
-#nav-menu{
-  margin: 0 18px;
-}
 .nav-menu::after {
   width:calc(100% - 36px);
   margin: 0 18px;
 }
-.post-list{
+#nav-menu,.post-list,.blog-content,.comments,.page-content{
   margin:0 18px;
 }
+#header{overflow:hidden;}
 }
 @media (prefers-color-scheme: light) {
   .listblog:hover {

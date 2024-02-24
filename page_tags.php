@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 <?php $this->need('sidebar.php'); ?>
 
-<div class="main" id="main" role="main">
+<div class="post-page main" id="main" role="main">
     <?php $this->need('topbar.php'); ?>
 	<div class="page-content tags">
 	  <?php $this->widget('Widget_Metas_Tag_Cloud', 'sort=mid&ignoreZeroCount=0&desc=0&limit=2000')->to($tags); 	

@@ -2,9 +2,9 @@
 <?php $this->need('header.php'); ?>
 <?php $this->need('sidebar.php'); ?>
 
-<div class="main" id="main" role="main">
+<div class="post-page main" id="main" role="main">
     <?php $this->need('topbar.php'); ?>
-    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <article class="post page-content" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline">
             <?php $this->title() ?>
         </h1>

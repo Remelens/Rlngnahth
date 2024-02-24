@@ -63,9 +63,9 @@ textarea {
 .mobilebtn button{
     background:#0009;
 }
-}
 @media screen and (max-width:750px){
 :root{
     --background-color:#010101;
+}
 }
 }

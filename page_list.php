@@ -8,7 +8,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
 <?php $this->need('sidebar.php'); ?>
 
-<div class="main" id="main" role="main">
+<div class="post-page main" id="main" role="main">
     <?php $this->need('topbar.php'); ?>
     <div class="page-content lists">
     <h2 id="page-title">所有文章</h2>

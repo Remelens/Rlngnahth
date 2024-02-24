@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <div class="sidebar<?php if($this->fields->Thumbnail&&$this->is('post')){echo ' tumb';}?>" id="sidebar" role="complementary">
-    <header id="header">
+    <header id="header" class="desktop-show">
         <div class="site-name">
             <a id="logo" href="<?php $this->options->siteUrl(); ?>">
                 <?php if ($this->options->logoUrl): ?>
@@ -8,7 +8,9 @@
                 <?php endif; ?>
                 <span class="title-box">
                     <span id="site-title"><?php $this->options->title() ?></span>
-                    <p class="description"><?php $this->options->description() ?></p>
+                    <p class="description">
+                        <span class="desc"><?php $this->options->description() ?></span>
+                        <span class="domain"><?php echo explode("/",$this->request->getRequestUrl())[2]; ?></span></p>
                 </span>
             </a>
         </div>
