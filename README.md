@@ -9,6 +9,7 @@ Typecho主题，外观布局来原于Hexo [Stellar](https://xaoxuu.com/wiki/stel
 * 支持自动切换亮暗色
 * 可启用katex数学公式
 * 可启用[twemoji](https://github.com/twitter/twemoji)
+* 代码里有单词拼写错误😅
 
 ### 部分功能用法
 
