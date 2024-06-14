@@ -28,7 +28,7 @@ $行内\KaTeX$
 ```
 
 ### 部分代码说明
-部分css代码来源于Stellar,独立页面`page_list`列出所有博文的程式来源于[Matcha](https://github.com/BigCoke233/matcha)，博文列表页面切换代码、略缩图函数等程式来源于[Typecho Butterfly](https://github.com/wehaox/Typecho-Butterfly)，~~好一个大杂烩~~
+部分css代码来源于Stellar,独立页面`page_list`列出所有博文的程式来源于[Matcha](https://github.com/BigCoke233/matcha)，博文列表页面切换代码、略缩图函数等程式来源于[Typecho Butterfly](https://github.com/wehaox/Typecho-Butterfly)，~~好一个大杂烩~~ 结果单词还能抄错😅
 
 Copyright (c) 2022-2024 Remelens  
 Named by Ect07.
