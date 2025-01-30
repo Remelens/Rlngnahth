@@ -1,7 +1,7 @@
 # Rlngnahth
 Typecho主题，外观布局来原于Hexo [Stellar](https://xaoxuu.com/wiki/stellar/)
 
-![](https://blog.remelens.link/usr/themes/relonease/screenshot.png)
+![](https://github.com/Remelens/Rlngnahth/raw/main/screenshot.png)
 
 ### ~~拿出来丢脸的~~特点
 
