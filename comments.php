@@ -47,7 +47,7 @@ $this->header('commentReply=1&description=0&keywords=0&generator=0&template=0&pi
                 <p>
                     <label for="textarea" class="required"><?php _e('内容'); ?></label>
                     <textarea rows="8" cols="50" name="text" id="textarea" class="textarea"
-                              placeholder="uwu! awa! hi yooo!" required><?php $this->remember('text'); ?></textarea>
+                              placeholder="给条评论吧uwu" required><?php $this->remember('text'); ?></textarea>
                 </p>
                 <p>
                     <button type="submit" class="submit"><?php _e('发布'); ?></button>
@@ -57,7 +57,7 @@ $this->header('commentReply=1&description=0&keywords=0&generator=0&template=0&pi
     <?php else: ?>
         <div class="info-block">
         <h3><?php _e('评论已关闭'); ?></h3>
-        <p>喔，这个文章现在不允许评论</p>
+        <p>暂时不能评论qwq</p>
         </div>
     <?php endif; ?>
     <?php if ($comments->have()): ?>

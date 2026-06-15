@@ -32,6 +32,16 @@ function themeConfig($form)
 
     $form->addInput($siteInfo);
 
+    $pinnedBlogs = new \Typecho\Widget\Helper\Form\Element\Text(
+        'pinnedBlogs',
+        null,
+        null,
+        _t('置顶博客'),
+        _t('填入置顶博客的编号(cid)，以半角逗号分隔。')
+    );
+
+    $form->addInput($pinnedBlogs);
+
     $listAllBlog = new \Typecho\Widget\Helper\Form\Element\Radio(
         'listAllBlog',
         [
@@ -47,7 +57,7 @@ function themeConfig($form)
     $avatar = new \Typecho\Widget\Helper\Form\Element\Select(
         'avatar',
         [
-            '官方源',
+            '官方源(墙)',
             'Gravatar CN',
             '七牛云',
             '极客族',
@@ -60,6 +70,23 @@ function themeConfig($form)
         _t('自定义gravatar源')
     );
     $form->addInput($avatar);
+
+    $cdnjsurl = new \Typecho\Widget\Helper\Form\Element\Select(
+        'cdnjsurl',
+        [
+            'Cloudflare(官方,国内慢)',
+            '南科大(无法外网访问)',
+            'loil',
+            'zstatic',
+            '7ED',
+            'Web缓存网',
+            '神楽坂 玉兔/54yt'
+        ],
+        'zstatic',
+        _t('CDNJS源'),
+        _t('自定义javascript资源来源。Cloudflare国内速度较慢，建议换为国内源')
+    );
+    $form->addInput($cdnjsurl);
 
     $siteHeader = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'siteHeader',
@@ -80,6 +107,16 @@ function themeConfig($form)
     );
 
     $form->addInput($siteFooter);
+
+    $friendLinks = new \Typecho\Widget\Helper\Form\Element\Textarea(
+        'friendLinks',
+        null,
+        null,
+        _t('友情链接'),
+        _t('需在独立页面选用“友链”模版。一行一个，以 名称||URL||介绍||Logo URL 的格式填写，空格以留空。')
+    );
+
+    $form->addInput($friendLinks);
 
     $pjax = new \Typecho\Widget\Helper\Form\Element\Select(
         'pjax',
@@ -134,7 +171,8 @@ function themeConfig($form)
             'ShowRecentComments' => _t('显示最近回复'),
             'ShowCategory'       => _t('显示分类'),
             'ShowArchive'        => _t('显示归档'),
-            'ShowRss'          => _t('显示RSS地址'),
+            'ShowRss'            => _t('显示RSS地址'),
+            'EnableCommentKatex' => _t('启用评论Katex'),
             'ShowAdmin'          => _t('显示登录地址（建议关闭）')
         ],
         ['ShowRecentPosts', 'ShowRecentComments', 'ShowCategory', 'ShowArchive', 'ShowRss'],
@@ -213,6 +251,27 @@ function displayLicense($widget){
             echo '<b>Debug:</b>'.$widget->fields->license[0].'<br>';
     }
 }
+function cdnjs(){
+        switch(Helper::options()->cdnjsurl){
+        case 0:
+            $cdnjsurl='https://cdnjs.cloudflare.com';break;
+        case 1:
+            $cdnjsurl='https://mirrors.sustech.edu.cn/cdnjs';break;
+        case 2:
+            $cdnjsurl='https://cdnjs.loli.net';break;
+        case 3:
+            $cdnjsurl='https://s4.zstatic.net';break;
+        case 4:
+            $cdnjsurl='https://use.sevencdn.com';break;
+        case 5:
+            $cdnjsurl='https://cdnjs.webstatic.cn';break;
+        case 6:
+            $cdnjsurl='https://cdnjs.snrat.com';break;
+        default:
+            $cdnjsurl='https://cdnjs.cloudflare.com';
+    }
+    echo $cdnjsurl;
+}
 function changeAvatar(){
     switch(Helper::options()->avatar){
         case 0:
@@ -267,7 +326,7 @@ echo $commentClass;
             <span itemprop="image"><?php $comments->gravatar('80', ''); ?></span>
             <cite class="fn">
                 <span class="author"><?php $comments->author(); ?></span>
-                <span class="comment-meta"><a href="<?php $comments->permalink(); ?>"><time itemprop="commentTime" datetime="<?php $comments->date(); ?>"><?php $comments->date('Y-m-d H:i'); ?></time></a></span>
+                <span class="comment-meta"><a href="<?php $comments->permalink(); ?>"><time itemprop="commentTime" datetime="<?php $comments->date(); ?>"><?php $comments->date('Y-m-d H:i:s'); ?></time></a></span>
             </cite>
         </div>
         <div class="comment-content"><?php $comments->content(); ?></div>
@@ -282,21 +341,21 @@ echo $commentClass;
 <?php 
 }
 function getArchives($widget) {
-        $db = Typecho_Db::get();
+        $db = Typecho\Db::get();
         $rows = $db->fetchAll($db->select()
         ->from('table.contents')
-         ->order('table.contents.created', Typecho_Db::SORT_DESC)
+         ->order('table.contents.created', 'DESC')
         ->where('table.contents.type = ?', 'post')
         ->where('table.contents.status = ?', 'publish'));
           
         $stat = array();
         foreach ($rows as $row) {
-            $row = $widget->filter($row);
+            $widget->push($row);
             $arr = array(
-                'title' => $row['title'],
-                'permalink' => $row['permalink']
+                'title' => $widget->title,
+                'permalink' => $widget->permalink
             );
-            $stat[date('Y', $row['created'])][$row['created']] = $arr;
+            $stat[date('Y', $widget->created)][$widget->created] = $arr;
         }
         return $stat;
 }
@@ -313,8 +372,8 @@ function fancybox($content){
     );
 }
 function createCatalog($obj){
-    global $catalog;
-    global $catalog_count;
+    $catalog=[];
+    $catalog_count=0;
     $catalog = array();
     $catalog_count = 0;
     $obj = preg_replace_callback('/<h([1-6])(.*?)>(.*?)<\/h\1>/i', function ($obj) {
@@ -322,10 +381,39 @@ function createCatalog($obj){
         global $catalog_count;
         $catalog_count++;
         $catalog[] = array('text' => trim(strip_tags($obj[3])), 'depth' => $obj[1], 'count' => $catalog_count);
-        return '<h' . $obj[1] . $obj[2] . ' id="cl-' . $catalog_count . '"><a class="markdownIt-Anchor" href="#cl-' . $catalog_count . '"></a>' . $obj[3] . '</h' . $obj[1] . '>';
+        return '<h' . $obj[1] . $obj[2] . ' id="cl-' . $catalog_count . '"><a class="post-anchor" href="#cl-' . $catalog_count . '">#</a>' . $obj[3] . '</h' . $obj[1] . '>';
     }, $obj);
     return $obj;
 }
+function shortLink($obj){
+    $obj = preg_replace_callback('/<a(.*?)href="(.*?)"(.*?)>(.*?)<\/a>/i', function ($obj) {
+        if(substr($obj[2],0,4)!=="http"||$obj[2]!==$obj[4]||strlen($obj[2])<=30){
+            return $obj[0];
+        }
+        $retext=substr($obj[4],0,27).'...';
+        return "<a{$obj[1]}href=\"{$obj[2]}\"{$obj[3]}>{$retext}</a>";
+    }, $obj);
+    return $obj;
+}//实验性
 function contentReplace($ctt){
     return createCatalog(fancybox($ctt));
+}
+
+//TODO:
+function friendLink($obj){
+    $obj = preg_replace_callback('/(.*?)\|\|(.*?)\|\|(.*?)\|\|(.*?)(\n|$)/i', function ($obj) {
+        //Security
+        foreach ($obj as $objid => $objitem) {
+            $obj[$objid]=trim($objitem);
+        }
+        $obj[1]=htmlspecialchars($obj[1],ENT_QUOTES|ENT_HTML5,'UTF-8');
+        $obj[3]=htmlspecialchars($obj[3],ENT_QUOTES|ENT_HTML5,'UTF-8');
+        $obj[2]=(strpos($obj[2],"\"")?"":$obj[2]);
+        $obj[4]=(strpos($obj[4],"\"")?"":$obj[4]);
+        if(substr($obj[2],0,4)!=="http"){
+            return "";
+        }
+        return "<a class=\"friend-link-item\" title=\"{$obj[1]} - {$obj[3]}\" target=\"_blank\" href=\"{$obj[2]}\"><img class=\"friend-link-img\" alt=\"{$obj[1]} ICON\" src=\"{$obj[4]}\" /> <span class=\"friend-link-info\"> <span class=\"friend-link-title\">{$obj[1]}</span><span class=\"friend-link-details\">{$obj[3]}</span> </span> </a>";
+    }, $obj);
+    return $obj;
 }

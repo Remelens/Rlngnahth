@@ -17,7 +17,7 @@
         <article class="listblog post<?php if($tumb_img!==false){echo ' tumb-img';}?>" itemscope itemtype="http://schema.org/BlogPosting">
             <?php if($tumb_img!==false):?>
                 <a href="<?php $this->permalink() ?>">
-                <?php echo '<div class="img"><img class="timg" alt="" src="'.$tumb_img.'"></div>';?>
+                <?php echo '<div class="img"><img class="timg" alt="" src="'.$tumb_img.'" loading="lazy" ></div>';?>
                 </a>
             <?php endif; ?>
             <div class="box">

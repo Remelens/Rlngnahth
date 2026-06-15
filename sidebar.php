@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<div class="sidebar<?php if($this->fields->Thumbnail&&$this->is('post')){echo ' tumb';}?>" id="sidebar" role="complementary">
+<div class="sidebar" id="sidebar" role="complementary">
     <header id="header" class="desktop-show">
         <div class="site-name">
             <a id="logo" href="<?php $this->options->siteUrl(); ?>">
@@ -15,9 +15,9 @@
             </a>
         </div>
     </header>
-    <div class="site-search">
+    <div class="site-search desktop-show">
         <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
-            <input type="text" id="s" name="s" class="text" placeholder="<?php _e('搜索博客'); ?>"/>
+            <input type="text" id="s" name="s" class="text" placeholder="<?php _e('搜索博客'); ?>" <?php if($this->is('search')){echo 'value="'.$this->archiveTitle.'"';}; ?>/>
             <?php $this->need('img/search.svg'); ?>
         </form>
     </div>

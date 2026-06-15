@@ -1,12 +1,14 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('header.php'); ?>
-<?php if($this->fields->Thumbnail){echo '<img alt="" src="'.$this->fields->Thumbnail.'" class="tumbhead"/>';}?>
 <?php $this->need('sidebar.php'); ?>
-
-<div class="post-page main<?php if($this->fields->Thumbnail&&$this->is('post')){echo ' tumb';}?>" id="main" role="main">
-    <article class="post blog-content" itemscope itemtype="http://schema.org/BlogPosting">
-        <span class="position"><a href="/">首页</a> / <?php $this->category(' / '); ?></span><br>
-        <span class="info">由 <a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a> 发表于<time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>，更新于<time datetime="<?php echo date('c',$this->modified);?>"><?php echo date('Y-m-d H:i:s', $this->modified); ?></time></span>
+<div class="post-page main" id="main" role="main">
+    <article class="post blog-content<?php if($this->fields->Thumbnail){echo ' thumb-blog';}?>" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-info" <?php if($this->fields->Thumbnail){echo "style=\"background:linear-gradient(rgba(0,0,0,0.37),rgba(0,0,0,0.37)),url({$this->fields->Thumbnail}) center center;background-size:cover;\"";}?>>
+            <div class="info-ctt">
+            <span class="position"><a href="/">首页</a> / <?php $this->category(' / '); ?></span><br>
+            <span class="info">由 <a itemprop="name" href="<?php $this->author->permalink(); ?>" rel="author"><?php $this->author(); ?></a> 发表于<time datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time>，更新于<time datetime="<?php echo date('c',$this->modified);?>"><?php echo date('Y-m-d H:i:s', $this->modified); ?></time></span>
+            </div>
+        </div>
         <h1 class="post-title" itemprop="name headline">
             <?php $this->title() ?>
         </h1>

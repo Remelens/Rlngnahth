@@ -3,14 +3,10 @@
  * Static files *
  *==============*/
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-function cdnjs(){
-    $cdnjsurl='https://mirrors.sustech.edu.cn/cdnjs';
-    echo $cdnjsurl;
-}
 ?>
 <link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" integrity="sha512-uushWJqqsPYQOOyatyQoJ44WljQCC70km/MB94XcZVajojoEWQ7S4DoFMtIh4AqmS0to9mI84jxZHR2aV/OIlA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <?php if($this->options->katex===1||$this->options->katex==='1'):?>
 <link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,7 +22,7 @@ function LoadLatex() {
               {left: '\\[', right: '\\]', display: true}
           ],
           throwOnError : false,
-          ignoredClasses:['comments','sidebar'],//禁止渲染katex的类
+          ignoredClasses:[<?php if (!empty($this->options->sidebarBlock) && !in_array('EnableCommentKatex', $this->options->sidebarBlock)){echo "'comments','sidebar'";} ?>],//禁止渲染katex的类
           ignoredTags:["script", "noscript", "style", "input", "textarea", "pre", "code", "option"]//禁止渲染katex的标签/元素
         });
 }
@@ -38,10 +34,10 @@ function LoadLatex() {
 <script>
 function LoadTwemoji(){
 	twemoji.parse(document.body,  {
-    base:'https://cdnjs.cloudflare.com',         // default MaxCDN
+    base:'<?php cdnjs();?>',         // default MaxCDN
     ext: '.svg',          // default ".png"
     className: 'twemoji emoji',    // default "emoji"
-    folder: '/ajax/libs/twemoji/15.0.3/svg/'        // in case it's specified
+    folder: '/ajax/libs/twemoji/16.0.1/svg/'        // in case it's specified
   });
 }
 </script>
@@ -49,13 +45,14 @@ function LoadTwemoji(){
 
 <script src="<?php cdnjs();?>/ajax/libs/pjax/0.2.8/pjax.min.js" integrity="sha512-iO07sRG5JOTsN7ndYtu10PsT8Cj1rFyZmIfgtYp5JogZCl7KgSMGcyuMbwVxCJT4oRY5ulCZMEaMdI1Y1HDwbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="<?php cdnjs();?>/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="<?php cdnjs();?>/ajax/libs/prism/1.29.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="<?php cdnjs();?>/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="<?php cdnjs();?>/ajax/libs/prism/1.30.0/prism.min.js" integrity="sha512-HiD3V4nv8fcjtouznjT9TqDNDm1EXngV331YGbfVGeKUoH+OLkRTCMzA34ecjlgSQZpdHZupdSrqHY+Hz3l6uQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="<?php cdnjs();?>/ajax/libs/prism/1.30.0/components/prism-core.min.js" integrity="sha512-Uw06iFFf9hwoN77+kPl/1DZL66tKsvZg6EWm7n6QxInyptVuycfrO52hATXDRozk7KWeXnrSueiglILct8IkkA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="<?php cdnjs();?>/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/prism-themes/1.9.0/prism-vsc-dark-plus.min.css" integrity="sha512-ML8rkwYTFNcblPFx+VLgFIT2boa6f8DDP6p6go4+FT0/mJ8DCbCgi6S0UdjtzB3hKCr1zhU+YVB0AHhIloZP8Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<script src="<?php cdnjs();?>/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js" integrity="sha512-PAURuQ4QaYqk2OA3wmFRZDj9fK8jRNFqG/38qiR4qVdjbpZy+ByXr37AgqyVTiZbCuKunE0Fo/lBMdnsC7Kt8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" integrity="sha512-dxr4721bEsdCIMMW3FYUBjwftlyBp11cezjcLfp3gRekYzSGdUBBg7WziAZTvWk3txO+XL1Suoj8a/WutfZy2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="<?php cdnjs();?>/ajax/libs/fancyapps-ui/6.0.33/fancybox/fancybox.umd.min.js" integrity="sha512-deYxm5IR/aw1dAWY64gUUQA3gQNJTGJP6fH6zC6rRH/vys5Uh3q3F9BwUwldLhb8BN6unmMF1VAO/uTVIndI7Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="<?php cdnjs();?>/ajax/libs/fancyapps-ui/6.0.33/fancybox/fancybox.min.css" integrity="sha512-0dRjmx+Lpjt+bZeJCTFSM3tGRkM70jI6ujFZQmvSAZfC1uNWAMcZgdVkGmSvfVOWzDoOARUB+huvViDiITfw8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <script>
 //configures

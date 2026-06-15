@@ -1,14 +1,13 @@
 /* ------------------------------------
- * Rlngnahth CSS Darkmode
+ * Rlngnahth CSS Dark Plugin
  *
  * @author  Remelens
- * @link  https://remelens.me/
- * @update  2024-1-20
+ * @link  https://remelens.link/
+ * @update  2024-01-20
  * --------------------------------- */
 @media (prefers-color-scheme: dark) {
 :root{
     --font-family:"LXGW WenKai Screen","Microsoft Yahei UI", "Pingfang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei",system-ui,serif;
-    --font-size:92%;
     --background-color:#1c1e21;
     --background-important-color:#373d43;
     --text-color:#ccc;
@@ -61,11 +60,16 @@ textarea {
     color:var(--text-color);
 }
 .mobilebtn button{
-    background:#0009;
+    background:#2229;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+}
+.mobilebtn button:hover{
+    background:#222e;
 }
 @media screen and (max-width:750px){
-:root{
-    --background-color:#010101;
-}
+    :root{
+        --background-color:#010101;
+    }
 }
 }

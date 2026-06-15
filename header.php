@@ -1,6 +1,6 @@
 <?php 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit; 
-if($_SERVER["HTTP_X_PJAX"]==="true"){
+if(isset($_SERVER["HTTP_X_PJAX"])&&$_SERVER["HTTP_X_PJAX"]==="true"){
     \Typecho\Response::getInstance()->setStatus(200);
 }
 ?>
@@ -15,23 +15,22 @@ if($_SERVER["HTTP_X_PJAX"]==="true"){
     <meta name="HandheldFriendly" content="True" >
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <?php $this->need('static.php');?>
-    <!-- 通过自有函数输出HTML头部信息 -->
+    <meta name="theme-color" content="#f8f8f8"><!--TODO-->
+    <!--HTML Header-->
     <?php $this->header('generator='); ?>
     <!--end-->
-    <meta name="theme-color" content="#f8f8f8"><!--TODO-->
     <title><?php $this->archiveTitle([
             'category' => _t('分类 %s 下的文章'),
             'search'   => _t('包含关键字 %s 的文章'),
             'tag'      => _t('标签 %s 下的文章'),
             'author'   => _t('%s 发布的文章')
         ], '', ' - '); ?><?php $this->options->title(); ?></title>
-
     <!-- 使用url函数转换相关路径 -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style_dark.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('static/pages.css'); ?>">
     <script src="<?php $this->options->themeUrl('static/script.js'); ?>"></script>
+    <?php $this->need('static.php');?>
     <?php echo $this->options->siteHeader; ?>
 </head>
 <body>

@@ -1,9 +1,9 @@
 /* ------------------------------------
- * Rlngnahth CSS
+ * Rlngnahth CSS Light
  *
  * @author  Remelens
- * @link  https://remelens.me/
- * @update  2024-1-20
+ * @link  https://remelens.link/
+ * @update  2025-03-01
  * --------------------------------- */
 /* ------------------
  * Expreiment Area
@@ -13,7 +13,8 @@
  * --------------- */
 :root{
     --font-family:"LXGW WenKai Screen","Microsoft Yahei UI", "Pingfang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei",system-ui,serif;
-    --font-size:92%;
+    --font-size:97.5%;
+    --article-font-size:100%;
     --background-color:#f9fafa;
     --background-important-color:#fff;
     --text-color:#444;
@@ -47,7 +48,7 @@
     --inline-radius:5px;
     /*code*/
     --code-font:Menlo, Monaco, Consolas, "Lucida Console", "Courier New", monospace;
-    --code-font-size:.92857em;
+    --code-font-size:.928em;
     --code-background:#F3F3F3;
     --code-inline-color:#B94A48;
     --code-color:var(--text-color);
@@ -119,6 +120,7 @@ blockquote {
 table {
   border: 1px solid var(--table-border);
   width: 100%;
+  border-collapse:collapse;
 }
 table th,
 table td {
@@ -188,14 +190,17 @@ button:hover,input[type="submit"]:hover{
 }
 .mobilebtn button{
     appearance:none;
-    background:none;
+    background:var(--background-color);
     border:none;
     border-radius:100%;
     width:2.5em;
     height:2.5em;
-    backdrop-filter:blur(5px);
-    -webkit-backdrop-filter:blur(5px);
     padding:0.5em;
+    transition:all 0.2s;
+}
+.mobilebtn button:hover{
+    background:var(--block-hover);
+    transition:all 0.2s;
 }
 .sidebar-icon{width:1.5em!important;height:1.5em!important;}
 .notfound-icon{
@@ -332,6 +337,7 @@ button:hover,input[type="submit"]:hover{
     z-index:1;
     background: var(--background-color);
     margin-bottom: 1px;
+    padding-top:3px;
     word-break: keep-all;
 }
 #nav-menu{
@@ -366,8 +372,8 @@ button:hover,input[type="submit"]:hover{
     position:relative;
 }
 .listitem{
-    padding: 8px 15px;
-    margin:7px 5px;
+    padding: 7px 14px;
+    margin:8px 5px;
     color: var(--text-third-color);
     border-radius: var(--inline-radius);
     position:relative;
@@ -397,6 +403,10 @@ article.post img,article.post svg,article.post p,#comments img,#comments svg{
 }
 article.post .box a,article.post .box a:hover{
     color:var(--text-color);
+}
+.blog-content,.page-content{
+    margin-left:5px;
+    margin-right:5px;
 }
 .listblog .post-content{
     margin:1em 0;
@@ -462,6 +472,31 @@ article .position,article .info{
 .post.page-content{
     padding-top:0;
 }
+.thumb-blog .post-info{
+    border-radius:var(--list-radius);
+    padding:var(--list-radius);
+    height: 120px;
+    margin-bottom: 25px;
+    box-shadow:var(--box-shadow);
+    position:relative;
+}
+.thumb-blog .post-info .info-ctt{
+    position:absolute;
+    bottom:10px;
+    width:calc(100% - var(--list-radius) * 2);
+    color:#e4e4e4;
+}
+.thumb-blog .post-info .info-ctt a,
+.thumb-blog .post-info .info-ctt a:hover,
+.thumb-blog .post-info .info-ctt a:active{
+    color:#fff;
+}
+#main .post.thumb-blog{
+    margin-top:16px;
+}
+article.post .main-post{
+    font-size:var(--article-font-size);
+}
 article.post .main-post a{
     position:relative;
     display:inline-block;
@@ -487,8 +522,21 @@ article.post .main-post a:hover::before{
     right:-2px;
     width:calc(100% + 4px);
     height:calc(100% + 4px);
-    border-radius:2px;
+    border-radius:4px;
     transition:all 0.2s;
+}
+article.post a.post-anchor{
+    user-select: none;
+    -webkit-user-select: none;
+    margin-right: 0.2em;
+}
+article.post a.post-anchor:hover{
+    color:var(--link-hover-color);
+}
+article.post a.post-anchor::before,article.post a.post-anchor:hover::before{
+    content: "";
+    width: 0;
+    height: 0;
 }
 #main p,#main li{
     line-height:25px;
@@ -533,6 +581,9 @@ details{
 .other-blog .blog{
     font-size: 130%;
     color:var(--text-third-color);
+}
+.comments{
+    margin:0 5px;
 }
 .comment-reply a{
     padding: 8px 14px;
@@ -688,13 +739,13 @@ details{
     top: 0px;
     bottom: 0;
     margin: 0;
+    width: calc(100% - 80px);
     transform: translateX(-200%);
     transition:all 0.5s;
 }
 #sidebar.showsidebar{
   display: block;
   position: fixed;
-  width: calc(100% - 80px);
   transform: translateX(0);
   overflow: scroll;
   height: calc(100% - 15px);
@@ -715,10 +766,18 @@ details{
   width:calc(100% - 36px);
   margin: 0 18px;
 }
-#nav-menu,.post-list,.blog-content,.comments,.page-content{
+#nav-menu,.post-list,.blog-content,.comments,.page-content,.site-search.mobile-show{
   margin:0 18px;
 }
 #header{overflow:hidden;}
+}
+@media screen and (max-width:500px){
+.error-page{
+    display:block;
+}
+.error-icon{
+    text-align:center;
+}
 }
 @media (prefers-color-scheme: light) {
   .listblog:hover {

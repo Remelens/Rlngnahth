@@ -13,26 +13,25 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
     <div class="page-content lists">
     <h2 id="page-title">所有文章</h2>
     <div class="article-sort">
-    <?php 
-    $archives = getArchives($this);
-    $number = 0;
-    foreach($archives as $year => $posts) {
-        $open = ($number === 0) ? NULL : ' closed';
-        echo '<div class="list-year"><h3 class="sort-year">'.$year.' 年</h3>';
-        foreach($posts as $created => $post) {
-            echo '<div class="article-sort-item">'.
-'<time class="post-meta-date-created" datetime="'.$created.'" title="发表于'.date('Y-m-d',$created).'">'.
-date('m-d',$created).
-'</time>'.
-'<a class="article-sort-item-title" href="'.$post['permalink'].'" title="'.$post['title'].'">
-'.$post['title'].
-'</a>'.
-'</div>'; //输出文章日期和标题
-        }
-        echo '</div>';
-        $number++;
-      }
-?>
+    <?php $archives = getArchives($this); ?>
+    <?php if (!empty($archives)): ?>
+        <?php $number = 0; ?>
+        <?php foreach ($archives as $year => $posts): ?>
+        <?php $open = ($number === 0) ? NULL : ' closed'; ?>
+        <div class="list-year<?php echo $open; ?>">
+            <h3 class="sort-year"><?php echo $year; ?> 年</h3>
+            <?php foreach ($posts as $created => $post): ?>
+            <div class="article-sort-item">
+                <time class="post-meta-date-created" datetime="<?php echo $created; ?>" title="发表于<?php echo date('Y-m-d', $created); ?>"><?php echo date('m-d', $created); ?></time>
+                <a class="article-sort-item-title" href="<?php echo $post['permalink']; ?>" title="<?php echo $post['title']; ?>"><?php echo $post['title']; ?></a>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php $number++; ?>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>暂无文章</p>
+    <?php endif; ?>
     </div>
     </div>
 </div><!-- end #main -->

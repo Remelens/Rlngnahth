@@ -16,6 +16,12 @@
     </a>
     </div>
 </header>
+<div class="site-search mobile-show">
+    <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+        <input type="text" id="s" name="s" class="text" placeholder="<?php _e('搜索博客'); ?>" <?php if($this->is('search')){echo 'value="'.$this->archiveTitle.'"';}; ?>/>
+        <?php $this->need('img/search.svg'); ?>
+    </form>
+</div>
 <div class="nav-menu">
     <nav id="nav-menu" class="clearfix" role="navigation">
         <a class="listitem<?php if ($this->is('index')): ?> current<?php endif; ?>"
